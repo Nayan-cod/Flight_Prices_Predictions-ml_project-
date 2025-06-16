@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+    <h2 style="text-align: center;">Login</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div style="margin-bottom: 15px;">
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}
+            {% for error in form.username.errors %}
+                <div style="color: red;">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+            {% for error in form.password.errors %}
+                <div style="color: red;">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div style="text-align: center;">
+            {{ form.submit(class="btn") }}
+        </div>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            <p style="color: red; text-align: center;">{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <p style="text-align: center; margin-top: 15px;">
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </p>
+</div>
+{% endblock content %}

@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 import pandas as pd
-from wtforms import  SelectField,DateField,TimeField,IntegerField,SubmitField
-from wtforms.validators import DataRequired
+from wtforms import  SelectField,DateField,TimeField,IntegerField,SubmitField,StringField, PasswordField
+from wtforms.validators import DataRequired,InputRequired, Length
 
 
 train=pd.read_csv("data/train.csv")
@@ -34,5 +34,14 @@ class InputForm(FlaskForm):
 
     submit=SubmitField("Pridict")
 
+class LoginForm(FlaskForm):
+    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
+    password = PasswordField('Password', validators=[InputRequired(), Length(min=4, max=80)])
+    submit = SubmitField('Login')
 
 
+
+class RegisterForm(FlaskForm):
+    username = StringField('Username', validators=[InputRequired(), Length(min=4, max=15)])
+    password = PasswordField('Password', validators=[InputRequired(), Length(min=4, max=80)])
+    submit = SubmitField('Register')
