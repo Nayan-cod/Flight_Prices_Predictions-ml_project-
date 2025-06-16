@@ -63,16 +63,7 @@
             {% endfor %}
         {% endif %}
     </div>
-    <br>
-    <div>
-        {{ form.duration.label }}
-        {{ form.duration }}
-        {% if form.duration.errors %}
-            {% for error in form.duration.errors %}
-                <div>{{ error }}</div>
-            {% endfor %}
-        {% endif %}
-    </div>
+    
     <br>
     <div>
         {{ form.total_stops.label }}

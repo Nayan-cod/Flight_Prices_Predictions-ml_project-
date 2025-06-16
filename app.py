@@ -31,7 +31,6 @@ def predict():
             destination=[form.destination.data],
             dep_time=[form.dep_time.data.strftime("%H:%M:%S")],
             arrival_time=[form.arrival_time.data.strftime("%H:%M:%S")],
-            duration=[form.duration.data],
             total_stops=[form.total_stops.data],
             additional_info=[form.additional_info.data]
         ))
